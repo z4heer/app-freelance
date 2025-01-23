@@ -1,1 +1,2 @@
 "node_modules/\nvenv/\ndist/\n__pycache__/\n*.pyc" 
+/.vs
