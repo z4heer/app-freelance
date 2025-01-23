@@ -1,0 +1,48 @@
+<mat-tab-group>
+  <!-- Upload Orders Tab -->
+  <mat-tab label="Upload Orders">
+    <mat-card>
+      <h2>Upload Orders</h2>
+      <form (submit)="uploadFile($event)">
+        <input type="file" (change)="onFileSelected($event)" required>
+        <button mat-raised-button color="primary" type="submit">Upload and Place Orders</button>
+      </form>
+    </mat-card>
+  </mat-tab>
+
+  <!-- List Orders Tab -->
+  <mat-tab label="Order List">
+    <mat-card>
+      <h2>Order List</h2>
+      <table mat-table [dataSource]="orders" class="mat-elevation-z8">
+        <ng-container matColumnDef="reqId">
+          <th mat-header-cell *matHeaderCellDef> Order ID </th>
+          <td mat-cell *matCellDef="let order"> {{ order.reqId }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Trading_Symbol">
+          <th mat-header-cell *matHeaderCellDef> Trading Symbol </th>
+          <td mat-cell *matCellDef="let order"> {{ order.Trading_Symbol }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Exchange">
+          <th mat-header-cell *matHeaderCellDef> Exchange </th>
+          <td mat-cell *matCellDef="let order"> {{ order.Exchange }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Action">
+          <th mat-header-cell *matHeaderCellDef> Action </th>
+          <td mat-cell *matCellDef="let order"> {{ order.Action }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Quantity">
+          <th mat-header-cell *matHeaderCellDef> Quantity </th>
+          <td mat-cell *matCellDef="let order"> {{ order.Quantity }} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </mat-card>
+  </mat-tab>
+</mat-tab-group>
